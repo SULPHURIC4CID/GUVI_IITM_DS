@@ -1,20 +1,19 @@
-def next(array):
-    if len(array) < len(s):
-        for j in range(len(s)):
-            if j not in array:
-                array.append(j);
-                next(array);
-    else:
-        final_matrix.append(array);
-        array.pop();
-        
-    
-s = input();
-num = range(len(s));
-final_matrix = [];
-temp = [];
-for i in range(len(s)):
-    temp.append(i) ;
-    next(temp);
+def toString(List):
+	return ''.join(List)
 
-    
+
+def permute(a, l, r):
+	if l == r:
+		print(toString(a))
+	else:
+		for i in range(l, r):
+			a[l], a[i] = a[i], a[l]
+			permute(a, l+1, r)
+			a[l], a[i] = a[i], a[l] # backtrack
+
+string = input();
+n = len(string)
+a = list(string)
+
+permute(a, 0, n)
+
