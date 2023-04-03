@@ -1,19 +1,21 @@
-def toString(List):
-	return ''.join(List)
 
-
-def permute(a, l, r):
-	if l == r:
-		print(toString(a))
-	else:
-		for i in range(l, r):
-			a[l], a[i] = a[i], a[l]
-			permute(a, l+1, r)
-			a[l], a[i] = a[i], a[l] # backtrack
-
-string = input();
-n = len(string)
-a = list(string)
-
-permute(a, 0, n)
-
+def permute(s, answer):
+    if (len(s) == 0):
+        print(answer, end="  ")
+        return
+ 
+    for i in range(len(s)):
+        ch = s[i]
+        left_substr = s[0:i]
+        right_substr = s[i + 1:]
+        rest = left_substr + right_substr
+        permute(rest, answer + ch)
+ 
+ 
+# Driver Code
+answer = ""
+ 
+s = input();
+ 
+print("All possible strings are : ")
+permute(s, answer)
